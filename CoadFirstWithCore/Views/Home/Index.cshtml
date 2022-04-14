@@ -1,0 +1,34 @@
+﻿@model List<CoadFirstWithCore.Models.Empmodel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<h2 style="color:orangered;text-align:center">Employee Details</h2>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td>@item.name</td>
+            <td>@item.age</td>
+            <td>@item.email</td>
+            <td><a asp-action="Edit" asp-controller="Home" asp-route-id="@item.id" class="btn btn-success">Edit</a></td>
+            <td><a asp-action="Delete" asp-controller="Home" asp-route-id="@item.id" class="btn btn-danger">Delete</a></td>
+            
+        </tr>
+    }
+
+</table>
+<a href="@Url.Action("AddEmp","Home")" class="btn btn-primary">Add-New</a>
